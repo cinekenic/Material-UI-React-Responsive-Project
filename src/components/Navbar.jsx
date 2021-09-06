@@ -7,7 +7,7 @@ const {
   alpha,
   Badge,
 } = require("@material-ui/core");
-const { Search, Mail, NotificationImportant } = require("@material-ui/icons");
+const { Search, Mail, Notifications } = require("@material-ui/icons");
 
 const useStyle = makeStyles((theme) => ({
   toolbar: {
@@ -59,6 +59,14 @@ function Navbar() {
         <div className={classes.search}>
           <Search />
           <InputBase placeholder="Search..." className={classes.input} />
+        </div>
+        <div className={classes.icons}>
+          <Badge badgeContent={4} color="secondary">
+            <Mail />
+          </Badge>
+          <Badge badgeContent={4} color="secondary">
+            <Notifications />
+          </Badge>
         </div>
       </Toolbar>
     </AppBar>
