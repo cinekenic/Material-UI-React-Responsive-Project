@@ -1,4 +1,15 @@
-import { Home, Person } from "@material-ui/icons";
+import {
+  Bookmark,
+  ExitToApp,
+  Home,
+  List,
+  Person,
+  PhotoCamera,
+  PlayCircleFilledOutlined,
+  Settings,
+  Storefront,
+  TabletMac,
+} from "@material-ui/icons";
 
 const { makeStyles, Container, Typography } = require("@material-ui/core");
 
@@ -50,20 +61,40 @@ function Leftbar() {
         <Typography className={classes.text}>Homepage</Typography>
       </div>
       <div className={classes.item}>
-        <Home className={classes.icon} />
-        <Typography className={classes.text}>Homepage</Typography>
+        <Person className={classes.icon} />
+        <Typography className={classes.text}>Friends</Typography>
       </div>
       <div className={classes.item}>
-        <Home className={classes.icon} />
-        <Typography className={classes.text}>Homepage</Typography>
+        <List className={classes.icon} />
+        <Typography className={classes.text}>Lists</Typography>
       </div>
       <div className={classes.item}>
-        <Home className={classes.icon} />
-        <Typography className={classes.text}>Homepage</Typography>
+        <PhotoCamera className={classes.icon} />
+        <Typography className={classes.text}>Camera</Typography>
       </div>
       <div className={classes.item}>
-        <Home className={classes.icon} />
-        <Typography className={classes.text}>Homepage</Typography>
+        <PlayCircleFilledOutlined className={classes.icon} />
+        <Typography className={classes.text}>Videos</Typography>
+      </div>
+      <div className={classes.item}>
+        <TabletMac className={classes.icon} />
+        <Typography className={classes.text}>Apps</Typography>
+      </div>
+      <div className={classes.item}>
+        <Bookmark className={classes.icon} />
+        <Typography className={classes.text}>Collections</Typography>
+      </div>
+      <div className={classes.item}>
+        <Storefront className={classes.icon} />
+        <Typography className={classes.text}>Market place</Typography>
+      </div>
+      <div className={classes.item}>
+        <Settings className={classes.icon} />
+        <Typography className={classes.text}>Settings</Typography>
+      </div>
+      <div className={classes.item}>
+        <ExitToApp className={classes.icon} />
+        <Typography className={classes.text}>Logout</Typography>
       </div>
     </Container>
   );
