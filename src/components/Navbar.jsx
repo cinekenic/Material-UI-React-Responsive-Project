@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const {
   makeStyles,
   AppBar,
@@ -6,8 +8,9 @@ const {
   InputBase,
   alpha,
   Badge,
+  Avatar,
 } = require("@material-ui/core");
-const { Search, Mail, Notifications } = require("@material-ui/icons");
+const { Search, Mail, Notifications, Cancel } = require("@material-ui/icons");
 
 const useStyle = makeStyles((theme) => ({
   toolbar: {
@@ -37,15 +40,40 @@ const useStyle = makeStyles((theme) => ({
     },
     borderRadius: theme.shape.borderRadius,
     width: "50%",
+    [theme.breakpoints.down("sm")]: {
+      display: (props) => (props.open ? "flex" : "none"),
+      width: "70%",
+    },
   },
   input: {
     color: "white",
     marginLeft: theme.spacing(3),
   },
+
+  cancel: {
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+  },
+
+  searchButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
+  icons: {
+    alignItems: "center",
+    display: (props) => (props.open ? "none" : "flex"),
+  },
+  badge: {
+    marginRight: theme.spacing(2),
+  },
 }));
 
 function Navbar() {
-  const classes = useStyle();
+  const [open, setOpen] = useState(false);
+  const classes = useStyle({ open });
 
   return (
     <AppBar>
@@ -57,16 +85,25 @@ function Navbar() {
           Heading 2
         </Typography>
         <div className={classes.search}>
-          <Search />
+          <Search onClick={() => setOpen(true)} />
           <InputBase placeholder="Search..." className={classes.input} />
+          <Cancel className={classes.cancel} onClick={() => setOpen(false)} />
         </div>
         <div className={classes.icons}>
-          <Badge badgeContent={4} color="secondary">
+          <Search
+            className={classes.searchButton}
+            onClick={() => setOpen(true)}
+          />
+          <Badge badgeContent={4} color="secondary" className={classes.badge}>
             <Mail />
           </Badge>
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={4} color="secondary" className={classes.badge}>
             <Notifications />
           </Badge>
+          <Avatar
+            alt="Remy Sharp"
+            src="https://images.pexels.com/photos/6977999/pexels-photo-6977999.jpeg?cs=srgb&dl=pexels-monstera-6977999.jpg&fm=jpg"
+          />
         </div>
       </Toolbar>
     </AppBar>
