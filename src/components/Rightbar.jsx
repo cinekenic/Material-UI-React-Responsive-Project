@@ -1,25 +1,20 @@
 import { Person } from "@material-ui/icons";
 
-const { makeStyles } = require("@material-ui/core");
+const { makeStyles, Container } = require("@material-ui/core");
 
-const useStyle = makeStyles((theme)=>({
-  
+const useStyle = makeStyles((theme) => ({
   // button:{
   //   ...theme.myButton
   // }
-}))
-
-
+  container: {
+    paddingTop: theme.spacing(10),
+  },
+}));
 
 function Rightbar() {
-  
   const classes = useStyle();
-  
-  return (
-    <div >
 
-    </div>
-  );
+  return <Container className={classes.container}>Rightbar</Container>;
 }
 
 export default Rightbar;
