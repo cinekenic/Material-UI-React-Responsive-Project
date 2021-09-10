@@ -11,7 +11,9 @@ import {
   Radio,
   FormLabel,
   Button,
+  Snackbar,
 } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import { Add as AddIcon } from "@material-ui/icons";
 import { useState } from "react";
 
@@ -47,6 +49,15 @@ const useStyle = makeStyles((theme) => ({
 const Add = () => {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenAlert(false);
+  };
 
   return (
     <>
@@ -116,6 +127,7 @@ const Add = () => {
                 variant="outlined"
                 color="primary"
                 style={{ marginRight: 20 }}
+                onClick={() => setOpenAlert(true)}
               >
                 Create
               </Button>
@@ -130,6 +142,16 @@ const Add = () => {
           </form>
         </Container>
       </Modal>
+      <Snackbar
+        open={openAlert}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+      >
+        <Alert onClose={handleClose} severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
